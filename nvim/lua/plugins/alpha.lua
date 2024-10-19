@@ -5,9 +5,7 @@ return {
     local alpha = require("alpha")
     local dashboard = require("alpha.themes.dashboard")
 
-    -- Quotes array included directly in the code
     local quotes = {
-      -- Your preferred quotes
       "Reality is that which, when you stop believing in it, doesn't go away. — Philip K. Dick",
       "Freedom begins between the ears. — Edward Abbey",
       "Knowledge, like air, is vital to life. Like air, no one should be denied it. — Alan Moore",
@@ -21,7 +19,6 @@ return {
       "The best way to predict the future is to invent it. — Alan Kay",
       "Technology is not neutral. We're inside of what we make, and it's inside of us. — Donna Haraway",
       "The future belongs to those who prepare for it today. — Malcolm X",
-      -- Additional quotes
       "Life can only be understood backwards; but it must be lived forwards. — Søren Kierkegaard",
       "Anxiety is the dizziness of freedom. — Søren Kierkegaard",
       "People demand freedom of speech as a compensation for the freedom of thought which they seldom use. — Søren Kierkegaard",
@@ -118,11 +115,14 @@ return {
 
     -- Set menu
     dashboard.section.buttons.val = {
-      dashboard.button("e", "New File", "<cmd>ene<CR>"),
-      dashboard.button("SPC ee", "Toggle file explorer", "<cmd>NvimTreeToggle<CR>"),
+      dashboard.button("SPC fr", "Recent Files", "<cmd>Telescope oldfiles<CR>"),
+      -- dashboard.button("e", "New File", "<cmd>ene<CR>"),
+      dashboard.button("SPC ee", "File Explorer", "<cmd>NvimTreeToggle<CR>"),
       dashboard.button("SPC ff", "Find File", "<cmd>Telescope find_files<CR>"),
       dashboard.button("SPC fs", "Find Word", "<cmd>Telescope live_grep<CR>"),
-      dashboard.button("q", "Quit NVIM", "<cmd>qa<CR>"),
+      dashboard.button("u", "Update Plugins", "<cmd>Lazy update<CR>"),
+      dashboard.button("i", "Install Plugins", "<cmd>Lazy install<CR>"),
+      dashboard.button("q", "Quit", "<cmd>qa<CR>"),
     }
 
     -- Configure the layout
