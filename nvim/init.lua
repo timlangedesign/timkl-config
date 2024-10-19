@@ -61,9 +61,9 @@ vim.cmd([[
 ]])
 
 vim.cmd([[
-  highlight CursorLine guibg=#31410A
+  highlight CursorLine guibg=#394264
 ]])
 
 vim.cmd([[
-  highlight Visual guibg=#31410A
+  highlight Visual guibg=#394264
 ]])
