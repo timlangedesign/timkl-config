@@ -67,3 +67,11 @@ vim.cmd([[
 vim.cmd([[
   highlight Visual guibg=#394264
 ]])
+
+-- Add this to your init.lua or a separate lua/colors.lua file
+vim.cmd([[
+  highlight Pmenu guibg=#2e3440 guifg=#d8dee9
+  highlight PmenuSel guibg=#4c566a guifg=#ffffff
+  highlight PmenuSbar guibg=#4c566a
+  highlight PmenuThumb guibg=#ffffff
+]])
