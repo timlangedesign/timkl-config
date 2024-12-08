@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]; then
+  echo "Usage: gif filename.mp4"
+  exit 1
+fi
+
+input_file="$1"
+output_file="${input_file%.*}.gif"
+
+# Generate the palette with original dimensions
+ffmpeg -i "$input_file" -vf "fps=15,palettegen" -y palette.png
+
+# Create the GIF with the original dimensions
+ffmpeg -i "$input_file" -i palette.png -lavfi "fps=15 [x]; [x][1:v] paletteuse" "$output_file"
+
+echo "GIF created: $output_file"
