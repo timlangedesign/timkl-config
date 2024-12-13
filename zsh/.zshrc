@@ -1,10 +1,7 @@
-# ----------------------------------------
-# Powerlevel10k Configuration
-# ----------------------------------------
-# Enable Powerlevel10k instant prompt (disabled here; uncomment to enable).
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
+# Enable Powerlevel10k instant prompt if available
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
 export ZSH_DISABLE_COMPFIX="true"
 
@@ -68,14 +65,25 @@ alias stitch='mv ~/Desktop/1.png ~/.config/scripts && \
               mv ~/Desktop/2.png ~/.config/scripts && \
               cd ~/.config/scripts && ./stitch-2screens.sh && open flow-comp.png'
 alias herzog="source venv/bin/activate && \
-              export OPENAI_API_KEY=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 && \
-              export ELEVEN_API_KEY=79b9c3f3784f2cd904627eff747d3755"
+              export OPENAI_API_KEY=$OPENAI_API_KEY && \
+              export ELEVEN_API_KEY=$ELEVEN_API_KEY"
 alias gif-convert="~/.config/scripts/gif"           # Alias for GIF conversion script
 
 # ----------------------------------------
 # PATH Configuration
 # ----------------------------------------
-export PATH="$HOME/.config/scripts:$HOME/bin:$HOME/Desktop/flutter_dev/flutter/bin:$HOME/.local/bin:$HOME/Developer/PlaydateSDK/bin:/opt/homebrew/opt/python@3.12/libexec/bin:/opt/homebrew/bin:$(brew --prefix ruby)/bin:$(gem env gemdir)/bin:$PATH"
+case "$(uname)" in
+  Darwin)
+    # macOS specific configuration
+    export PATH="$HOME/.config/scripts:$HOME/bin:$HOME/Desktop/flutter_dev/flutter/bin:$HOME/.local/bin:/opt/homebrew/bin:$(brew --prefix ruby)/bin:$PATH"
+    source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+    ;;
+  Linux)
+    # Linux specific configuration
+    export PATH="$HOME/.config/scripts:$HOME/bin:$HOME/.local/bin:/usr/bin:$PATH"
+    source /usr/share/powerlevel10k/powerlevel10k.zsh-theme
+    ;;
+esac
 
 # ----------------------------------------
 # Zoxide Setup
@@ -85,20 +93,21 @@ eval "$(zoxide init zsh)"
 # ----------------------------------------
 # Powerlevel10k Theme
 # ----------------------------------------
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.config/p10k/.p10k.zsh ]] || source ~/.config/p10k/.p10k.zsh
 
 # ----------------------------------------
 # Plugins
 # ----------------------------------------
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[[ -f /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+[[ -f /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # ----------------------------------------
 # Environment Variables
 # ----------------------------------------
-export PLAYDATE_SDK_PATH="$HOME/Developer/PlaydateSDK"
-export OPENAI_API_KEY='sk-proj-fHmw0lQd4xiWJw58Sxh0T3BlbkFJ3BfhXRk4Fb0uDcwuAB72'
+if [[ -f ~/.config/zsh/.env ]]; then
+  export $(grep -v '^#' ~/.config/zsh/.env | xargs)
+fi
+export PLAYDATE_SDK_PATH="${PLAYDATE_SDK_PATH:-$HOME/Developer/PlaydateSDK}"
 
 # ----------------------------------------
 # History Behavior
@@ -117,3 +126,6 @@ setopt hist_verify
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --type=d --hidden --exclude .git"
+
+# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
+[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
