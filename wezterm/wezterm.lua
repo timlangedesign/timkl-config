@@ -11,16 +11,19 @@ config.window_decorations = "RESIZE"
 config.window_background_opacity = 0.85
 config.macos_window_background_blur = 18
 
--- Hostname-Specific Configurations
+-- Hostname-Specific Startup Messages
 local hostname = wezterm.hostname()
 local startup_message = ""
+
 if hostname == "ITSG009341-MAC" then
 	startup_message = "*** Hej Tim, arbejd arbejd! Qapla! Sic itur ad astra. ***"
-else
+elseif hostname == "Tims-MacBook-Pro-2.local" then
 	startup_message = "*** Hi Tim, let your spirit guide you! Qapla! Ad astra per aspera. ***"
+else
+	startup_message = "*** Welcome, Tim! Let's make today amazing. ***"
 end
 
--- Default Program to Run at Startup
+-- Default Program to Start Zsh
 config.default_prog = {
 	"/bin/zsh",
 	"-c",
@@ -31,10 +34,10 @@ config.default_prog = {
     fi
     clear
     echo '%s'
-    if type timkl &> /dev/null; then
-      timkl
+    if [ -x ~/.config/scripts/timkl ]; then
+      ~/.config/scripts/timkl
     else
-      echo "Warning: 'timkl' command not found!"
+      echo "Warning: 'timkl' script not found or not executable!"
     fi
     exec /bin/zsh
   ]],
@@ -43,4 +46,3 @@ config.default_prog = {
 }
 
 return config
-
