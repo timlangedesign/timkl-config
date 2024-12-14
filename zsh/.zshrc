@@ -15,15 +15,48 @@ else
 fi
 
 # ----------------------------------------
+# Machine-Specific Configurations
+# ----------------------------------------
+case "$(hostname)" in
+  "ITSG009341-MAC")
+    alias work-alias="some-work-specific-command"
+    export WORK_ENV_VAR="value-for-work"
+    ;;
+  "Tims-MacBook-Pro-2.local")
+    alias personal-alias="some-personal-specific-command"
+    export PERSONAL_ENV_VAR="value-for-personal"
+    ;;
+esac
+
+# ----------------------------------------
 # Alias Definitions
 # ----------------------------------------
-alias timkl="~/.config/scripts/timkl"   # Custom timkl command
-alias gif="~/.config/scripts/gif"       # GIF conversion script
+# Custom Commands and Scripts
+alias timkl="~/.config/scripts/timkl"
+alias gif="~/.config/scripts/gif"
 alias cd="z"                            # Use Zoxide for navigation
 alias zs="source ~/.zshrc"              # Reload .zshrc
 alias ze="nvim ~/.zshrc"                # Edit .zshrc with Neovim
 alias ll="ls -a"                        # Show all files
 alias ls="eza --icons=always"           # Use eza with icons
+
+# YouTube Download Aliases
+alias yt-mp4='yt-dlp -f bestvideo+bestaudio/best -o "%(title)s.%(ext)s" --merge-output-format mp4'
+alias yt-mp3='yt-dlp -x --audio-format mp3 -o "%(title)s.%(ext)s"'
+alias yt-playlist='yt-dlp -o "%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s"'
+alias yt-shorts='yt-dlp -f bestvideo+bestaudio/best -o "%(title)s.%(ext)s" --merge-output-format mp4 $(pbpaste | sed "s/shorts\//watch?v=/")'
+alias yt-update='brew update && brew upgrade yt-dlp'
+
+# Manual for YouTube aliases
+yt-man() {
+  echo "YouTube-dl Custom Alias Manual:"
+  echo ""
+  echo "yt-mp4   -> Download video as MP4"
+  echo "yt-mp3   -> Download audio as MP3"
+  echo "yt-playlist -> Download playlist videos"
+  echo "yt-shorts -> Download YouTube Shorts as MP4"
+  echo "yt-update -> Update yt-dlp"
+}
 
 # ----------------------------------------
 # Powerlevel10k Instant Prompt
