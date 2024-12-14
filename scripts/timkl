@@ -1,7 +1,5 @@
 #!/bin/bash
 
-echo "Hi Tim, let's go!"
-echo ""
 echo "Aliases:"
 echo "  zs         -> Reload your .zshrc"
 echo "  ze         -> Edit your .zshrc in Neovim"

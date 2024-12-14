@@ -35,10 +35,11 @@ esac
 alias timkl="~/.config/scripts/timkl"
 alias gif="~/.config/scripts/gif"
 alias cd="z"                            # Use Zoxide for navigation
-alias zs="source ~/.zshrc"              # Reload .zshrc
-alias ze="nvim ~/.zshrc"                # Edit .zshrc with Neovim
+alias zs="source ~/config/zsh/.zshrc"            # Reload .zshrc
+alias ze="nvim ~/config/zsh/.zshrc"                # Edit .zshrc with Neovim
 alias ll="ls -a"                        # Show all files
 alias ls="eza --icons=always"           # Use eza with icons
+alias c="clear"
 
 # YouTube Download Aliases
 alias yt-mp4='yt-dlp -f bestvideo+bestaudio/best -o "%(title)s.%(ext)s" --merge-output-format mp4'
@@ -67,8 +68,8 @@ export ZSH_DISABLE_COMPFIX="true"
 # ----------------------------------------
 # Theme and Plugin Setup
 # ----------------------------------------
-ZSH_THEME="robbyrussell"
-plugins=(git)
+# ZSH_THEME="robbyrussell"
+# plugins=(git)
 
 # ----------------------------------------
 # History Configuration
@@ -92,8 +93,8 @@ source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 # ----------------------------------------
 # Plugins
 # ----------------------------------------
-[[ -f /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-[[ -f /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# [[ -f /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# [[ -f /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # ----------------------------------------
 # FZF Configuration

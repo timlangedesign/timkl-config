@@ -16,11 +16,11 @@ local hostname = wezterm.hostname()
 local startup_message = ""
 
 if hostname == "ITSG009341-MAC" then
-	startup_message = "*** Hej Tim, arbejd arbejd! Qapla! Sic itur ad astra. ***"
+	startup_message = "*** Work configuration. ***"
 elseif hostname == "Tims-MacBook-Pro-2.local" then
-	startup_message = "*** Hi Tim, let your spirit guide you! Qapla! Ad astra per aspera. ***"
+	startup_message = "*** Personal configuration. ***"
 else
-	startup_message = "*** Welcome, Tim! Let's make today amazing. ***"
+	startup_message = "*** No device specific configuration. ***"
 end
 
 -- Default Program to Start Zsh
