@@ -75,13 +75,13 @@ alias gif-convert="~/.config/scripts/gif"           # Alias for GIF conversion s
 case "$(uname)" in
   Darwin)
     # macOS specific configuration
-    export PATH="$HOME/.config/scripts:$HOME/bin:$HOME/Desktop/flutter_dev/flutter/bin:$HOME/.local/bin:/opt/homebrew/bin:$(brew --prefix ruby)/bin:$PATH"
-    source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+    [[ -d "$HOME/.config/scripts" ]] && export PATH="$HOME/.config/scripts:$PATH"
+    export PATH="$HOME/bin:$HOME/Desktop/flutter_dev/flutter/bin:$HOME/.local/bin:/opt/homebrew/bin:$(brew --prefix ruby)/bin:$PATH"
     ;;
   Linux)
     # Linux specific configuration
-    export PATH="$HOME/.config/scripts:$HOME/bin:$HOME/.local/bin:/usr/bin:$PATH"
-    source /usr/share/powerlevel10k/powerlevel10k.zsh-theme
+    [[ -d "$HOME/.config/scripts" ]] && export PATH="$HOME/.config/scripts:$PATH"
+    export PATH="$HOME/bin:$HOME/.local/bin:/usr/bin:$PATH"
     ;;
 esac
 
