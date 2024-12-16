@@ -35,8 +35,8 @@ esac
 alias timkl="~/.config/scripts/timkl"
 alias gif="~/.config/scripts/gif"
 alias cd="z"                            # Use Zoxide for navigation
-alias zs="source ~/config/zsh/.zshrc"            # Reload .zshrc
-alias ze="nvim ~/config/zsh/.zshrc"                # Edit .zshrc with Neovim
+alias zs="source ~/.config/zsh/.zshrc"            # Reload .zshrc
+alias ze="nvim ~/.config/zsh/.zshrc"                # Edit .zshrc with Neovim
 alias ll="ls -a"                        # Show all files
 alias ls="eza --icons=always"           # Use eza with icons
 alias c="clear"
