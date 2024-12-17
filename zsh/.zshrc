@@ -40,6 +40,7 @@ alias ze="nvim ~/.config/zsh/.zshrc"                # Edit .zshrc with Neovim
 alias ll="ls -a"                        # Show all files
 alias ls="eza --icons=always"           # Use eza with icons
 alias c="clear"
+alias organize="~/.config/scripts/organize.sh"
 
 # YouTube Download Aliases
 alias yt-mp4='yt-dlp -f bestvideo+bestaudio/best -o "%(title)s.%(ext)s" --merge-output-format mp4'
