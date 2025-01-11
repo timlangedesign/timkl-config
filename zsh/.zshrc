@@ -66,12 +66,6 @@ typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 export ZSH_DISABLE_COMPFIX="true"
 
 # ----------------------------------------
-# Theme and Plugin Setup
-# ----------------------------------------
-# ZSH_THEME="robbyrussell"
-# plugins=(git)
-
-# ----------------------------------------
 # History Configuration
 # ----------------------------------------
 HIST_STAMPS="mm/dd/yyyy"
@@ -89,12 +83,6 @@ export PATH="$HOME/.config/scripts:$HOME/bin:$HOME/.local/bin:$HOME/Desktop/flut
 # ----------------------------------------
 source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
-
-# ----------------------------------------
-# Plugins
-# ----------------------------------------
-# [[ -f /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-# [[ -f /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # ----------------------------------------
 # FZF Configuration

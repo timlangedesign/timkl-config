@@ -1,0 +1,17 @@
+font-family = SF Mono  
+font-size = 16 
+theme = tokyonight
+shell-integration-features = no-cursor,sudo,no-title
+cursor-style = block
+adjust-cell-height = 8%
+background-opacity = 0.92
+background-blur-radius = 16
+mouse-hide-while-typing = true
+mouse-scroll-multiplier = 2
+
+window-padding-balance = true 
+window-save-state = always
+macos-titlebar-style=transparent
+window-colorspace = "display-p3"
+
+macos-icon = custom-style
