@@ -1,0 +1,79 @@
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  /* TODO: I want to learn more about grids here!*/
+  padding: 2rem;
+}
+
+.card {
+  background-size: cover;
+  background-position: center;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  overflow: hidden;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  aspect-ratio: 3 / 2;
+  position: relative;
+  opacity: 0;
+  transform: translateY(20px); /* TODO: This doesn't seem to work */
+}
+
+.card.animate {
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+.card:hover {
+  transform: translateY(10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+  color: #fff;
+}
+
+.card h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.2rem;
+}
+
+.card p {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Example background images for each card */
+.card:nth-child(1) {
+  background-image: url("path/to/ecommerce-image.jpg");
+}
+.card:nth-child(2) {
+  background-image: url("path/to/fitness-app-image.jpg");
+}
+.card:nth-child(3) {
+  background-image: url("path/to/branding-image.jpg");
+}
+.card:nth-child(4) {
+  background-image: url("path/to/accessibility-image.jpg");
+}
+.card:nth-child(5) {
+  background-image: url("path/to/data-viz-image.jpg");
+}
+.card:nth-child(6) {
+  background-image: url("path/to/user-research-image.jpg");
+}

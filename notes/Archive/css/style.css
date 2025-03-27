@@ -1,0 +1,154 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+  position: relative;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle, transparent 50%, rgba(0, 0, 0, 0.1) 100%);
+  pointer-events: none;
+  z-index: 1000;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1001;
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+nav ul {
+  display: flex;
+  list-style-type: none;
+  gap: 1rem;
+}
+
+nav ul li {
+  cursor: pointer;
+  font-weight: 500;
+}
+
+nav ul li a {
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+}
+
+nav ul li a.active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+main {
+  margin-top: 70px;
+  padding: 2rem;
+  min-height: calc(100vh - 70px);
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Color schemes */
+body.about-active {
+  background-color: #f0e6ef;
+  color: #5a4a5e;
+}
+.about-active nav ul li a {
+  color: #5a4a5e;
+}
+.about-active nav ul li a:hover,
+.about-active nav ul li a.active {
+  background-color: rgba(203, 168, 196, 0.5);
+  color: #3d2e40;
+}
+
+body.case-studies-active {
+  background-color: #1a0b2e;
+  color: #e0d8ff;
+}
+.case-studies-active nav ul li a {
+  color: #e0d8ff;
+}
+.case-studies-active nav ul li a:hover,
+.case-studies-active nav ul li a.active {
+  background-color: rgba(74, 43, 126, 0.5);
+  color: #ffffff;
+}
+
+body.resume-active {
+  background-color: #e6f3ff;
+  color: #0a3d62;
+}
+.resume-active nav ul li a {
+  color: #0a3d62;
+}
+.resume-active nav ul li a:hover,
+.resume-active nav ul li a.active {
+  background-color: rgba(127, 185, 242, 0.5);
+  color: #05223a;
+}
+
+body.contact-active {
+  background-color: #0a2f25;
+  color: #b4e3d5;
+}
+.contact-active nav ul li a {
+  color: #b4e3d5;
+}
+.contact-active nav ul li a:hover,
+.contact-active nav ul li a.active {
+  background-color: rgba(33, 117, 97, 0.5);
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  nav {
+    margin-top: 1rem;
+  }
+  nav ul {
+    flex-direction: column;
+  }
+}
+
+/* Hide all sections by default */
+section {
+  display: none;
+}
+
+/* Show active section */
+body.about-active #about,
+body.case-studies-active #case-studies,
+body.resume-active #resume,
+body.contact-active #contact {
+  display: block;
+}

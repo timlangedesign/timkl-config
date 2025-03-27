@@ -34,6 +34,12 @@ esac
 # Custom Commands and Scripts
 alias timkl="~/.config/scripts/timkl"
 alias gif="~/.config/scripts/gif"
+alias desktop-cleanup="~/.config/scripts/desktop_organizer.sh"
+alias cleanshot-cleanup="~/.config/scripts/cleanshot_organizer.sh"
+alias downloads-cleanup="~/.config/scripts/downloads_organizer.sh"
+alias dc="~/.config/scripts/desktop_organizer.sh"          # Desktop cleanup shortcut
+alias cc="~/.config/scripts/cleanshot_organizer.sh"        # CleanShot cleanup shortcut
+alias dlc="~/.config/scripts/downloads_organizer.sh"       # Downloads cleanup shortcut
 alias cd="z"                            # Use Zoxide for navigation
 alias zs="source ~/.config/zsh/.zshrc"            # Reload .zshrc
 alias ze="nvim ~/.config/zsh/.zshrc"                # Edit .zshrc with Neovim
@@ -76,7 +82,7 @@ HISTFILE=$HOME/.cache/zsh/history
 # ----------------------------------------
 # PATH Configuration
 # ----------------------------------------
-export PATH="$HOME/.config/scripts:$HOME/bin:$HOME/.local/bin:$HOME/Desktop/flutter_dev/flutter/bin:$HOME/Developer/PlaydateSDK/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="$HOME/.bun/bin:$HOME/.config/scripts:$HOME/bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/Desktop/flutter_dev/flutter/bin:$HOME/Developer/PlaydateSDK/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
 # ----------------------------------------
 # Powerlevel10k Theme
@@ -110,3 +116,17 @@ setopt share_history
 setopt hist_expire_dups_first
 setopt hist_ignore_dups
 setopt hist_verify
+
+
+
+eval "$(rbenv init -)"
+
+# ----------------------------------------
+# Rust Setup
+# ----------------------------------------
+if [ -f "$HOME/.cargo/env" ]; then
+  source "$HOME/.cargo/env"
+fi
+
+# bun completions
+[ -s "/Users/tim.lange/.bun/_bun" ] && source "/Users/tim.lange/.bun/_bun"

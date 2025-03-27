@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Figma Touch Cursor",
+  "version": "1.0",
+  "description": "Replaces the default cursor with a touch-friendly bubble cursor on Figma prototypes.",
+  "permissions": ["scripting", "activeTab"],
+  "host_permissions": ["https://www.figma.com/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://www.figma.com/*"],
+      "js": ["cursor.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
