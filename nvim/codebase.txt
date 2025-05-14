@@ -1,0 +1,1910 @@
+Directory Structure:
+└── LICENSE
+└── README.md
+└── codebase.txt
+└── init.lua
+└── lazy-lock.json
+└── lazyvim.json
+├── lua/
+  ├── config/
+    └── autocmds.lua
+    └── keymaps.lua
+    └── lazy.lua
+    └── options.lua
+  ├── plugins/
+    └── alpha.lua
+    └── disabled.lua
+    └── emmet.lua
+    └── example.lua
+    └── golf.lua
+    └── init.lua
+    └── nvim-cmp.lua
+    └── svelte.lua
+    └── treesitter.lua
+  ├── timkl/
+    └── options.lua
+└── stylua.toml
+
+File Contents:
+
+File: lua/plugins/emmet.lua
+================================================
+return {
+  "mattn/emmet-vim",
+  ft = { "html", "css", "javascript", "javascriptreact", "typescript", "typescriptreact", "svelte", "vue" },
+  init = function()
+    -- Enable emmet for specific filetypes
+    vim.g.user_emmet_install_global = 0
+    vim.cmd [[autocmd FileType html,css,javascript,javascriptreact,typescript,typescriptreact,svelte,vue EmmetInstall]]
+    
+    -- Configure emmet leader key (default is <C-y>)
+    vim.g.user_emmet_leader_key = '<C-e>'
+    
+    -- Enable emmet expansion with Tab key
+    vim.g.user_emmet_expandabbr_key = '<Tab>'
+    
+    -- Only enable Tab expansion in insert and visual modes
+    vim.g.user_emmet_mode = 'iv'
+  end,
+}
+
+File: stylua.toml
+================================================
+indent_type = "Spaces"
+indent_width = 2
+column_width = 120
+
+File: lua/config/autocmds.lua
+================================================
+-- Autocmds are automatically loaded on the VeryLazy event
+-- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
+-- Add any additional autocmds here
+
+
+File: lua/timkl/options.lua
+================================================
+-- ~/.config/nvim/lua/user/options.lua
+vim.opt.relativenumber = true -- Shows relative line numbers
+vim.opt.number = true -- Shows the absolute number for the current line
+vim.opt.linebreak = true -- Wrap lines at word boundaries
+
+vim.opt.swapfile = false
+
+
+File: LICENSE
+================================================
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      "Legal Entity" shall mean the union of the acting entity and all
+      other entities that control, are controlled by, or are under common
+      control with that entity. For the purposes of this definition,
+      "control" means (i) the power, direct or indirect, to cause the
+      direction or management of such entity, whether by contract or
+      otherwise, or (ii) ownership of fifty percent (50%) or more of the
+      outstanding shares, or (iii) beneficial ownership of such entity.
+
+      "You" (or "Your") shall mean an individual or Legal Entity
+      exercising permissions granted by this License.
+
+      "Source" form shall mean the preferred form for making modifications,
+      including but not limited to software source code, documentation
+      source, and configuration files.
+
+      "Object" form shall mean any form resulting from mechanical
+      transformation or translation of a Source form, including but
+      not limited to compiled object code, generated documentation,
+      and conversions to other media types.
+
+      "Work" shall mean the work of authorship, whether in Source or
+      Object form, made available under the License, as indicated by a
+      copyright notice that is included in or attached to the work
+      (an example is provided in the Appendix below).
+
+      "Derivative Works" shall mean any work, whether in Source or Object
+      form, that is based on (or derived from) the Work and for which the
+      editorial revisions, annotations, elaborations, or other modifications
+      represent, as a whole, an original work of authorship. For the purposes
+      of this License, Derivative Works shall not include works that remain
+      separable from, or merely link (or bind by name) to the interfaces of,
+      the Work and Derivative Works thereof.
+
+      "Contribution" shall mean any work of authorship, including
+      the original version of the Work and any modifications or additions
+      to that Work or Derivative Works thereof, that is intentionally
+      submitted to Licensor for inclusion in the Work by the copyright owner
+      or by an individual or Legal Entity authorized to submit on behalf of
+      the copyright owner. For the purposes of this definition, "submitted"
+      means any form of electronic, verbal, or written communication sent
+      to the Licensor or its representatives, including but not limited to
+      communication on electronic mailing lists, source code control systems,
+      and issue tracking systems that are managed by, or on behalf of, the
+      Licensor for the purpose of discussing and improving the Work, but
+      excluding communication that is conspicuously marked or otherwise
+      designated in writing by the copyright owner as "Not a Contribution."
+
+      "Contributor" shall mean Licensor and any individual or Legal Entity
+      on behalf of whom a Contribution has been received by Licensor and
+      subsequently incorporated within the Work.
+
+   2. Grant of Copyright License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      copyright license to reproduce, prepare Derivative Works of,
+      publicly display, publicly perform, sublicense, and distribute the
+      Work and such Derivative Works in Source or Object form.
+
+   3. Grant of Patent License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      (except as stated in this section) patent license to make, have made,
+      use, offer to sell, sell, import, and otherwise transfer the Work,
+      where such license applies only to those patent claims licensable
+      by such Contributor that are necessarily infringed by their
+      Contribution(s) alone or by combination of their Contribution(s)
+      with the Work to which such Contribution(s) was submitted. If You
+      institute patent litigation against any entity (including a
+      cross-claim or counterclaim in a lawsuit) alleging that the Work
+      or a Contribution incorporated within the Work constitutes direct
+      or contributory patent infringement, then any patent licenses
+      granted to You under this License for that Work shall terminate
+      as of the date such litigation is filed.
+
+   4. Redistribution. You may reproduce and distribute copies of the
+      Work or Derivative Works thereof in any medium, with or without
+      modifications, and in Source or Object form, provided that You
+      meet the following conditions:
+
+      (a) You must give any other recipients of the Work or
+          Derivative Works a copy of this License; and
+
+      (b) You must cause any modified files to carry prominent notices
+          stating that You changed the files; and
+
+      (c) You must retain, in the Source form of any Derivative Works
+          that You distribute, all copyright, patent, trademark, and
+          attribution notices from the Source form of the Work,
+          excluding those notices that do not pertain to any part of
+          the Derivative Works; and
+
+      (d) If the Work includes a "NOTICE" text file as part of its
+          distribution, then any Derivative Works that You distribute must
+          include a readable copy of the attribution notices contained
+          within such NOTICE file, excluding those notices that do not
+          pertain to any part of the Derivative Works, in at least one
+          of the following places: within a NOTICE text file distributed
+          as part of the Derivative Works; within the Source form or
+          documentation, if provided along with the Derivative Works; or,
+          within a display generated by the Derivative Works, if and
+          wherever such third-party notices normally appear. The contents
+          of the NOTICE file are for informational purposes only and
+          do not modify the License. You may add Your own attribution
+          notices within Derivative Works that You distribute, alongside
+          or as an addendum to the NOTICE text from the Work, provided
+          that such additional attribution notices cannot be construed
+          as modifying the License.
+
+      You may add Your own copyright statement to Your modifications and
+      may provide additional or different license terms and conditions
+      for use, reproduction, or distribution of Your modifications, or
+      for any such Derivative Works as a whole, provided Your use,
+      reproduction, and distribution of the Work otherwise complies with
+      the conditions stated in this License.
+
+   5. Submission of Contributions. Unless You explicitly state otherwise,
+      any Contribution intentionally submitted for inclusion in the Work
+      by You to the Licensor shall be under the terms and conditions of
+      this License, without any additional terms or conditions.
+      Notwithstanding the above, nothing herein shall supersede or modify
+      the terms of any separate license agreement you may have executed
+      with Licensor regarding such Contributions.
+
+   6. Trademarks. This License does not grant permission to use the trade
+      names, trademarks, service marks, or product names of the Licensor,
+      except as required for reasonable and customary use in describing the
+      origin of the Work and reproducing the content of the NOTICE file.
+
+   7. Disclaimer of Warranty. Unless required by applicable law or
+      agreed to in writing, Licensor provides the Work (and each
+      Contributor provides its Contributions) on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+      implied, including, without limitation, any warranties or conditions
+      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
+      PARTICULAR PURPOSE. You are solely responsible for determining the
+      appropriateness of using or redistributing the Work and assume any
+      risks associated with Your exercise of permissions under this License.
+
+   8. Limitation of Liability. In no event and under no legal theory,
+      whether in tort (including negligence), contract, or otherwise,
+      unless required by applicable law (such as deliberate and grossly
+      negligent acts) or agreed to in writing, shall any Contributor be
+      liable to You for damages, including any direct, indirect, special,
+      incidental, or consequential damages of any character arising as a
+      result of this License or out of the use or inability to use the
+      Work (including but not limited to damages for loss of goodwill,
+      work stoppage, computer failure or malfunction, or any and all
+      other commercial damages or losses), even if such Contributor
+      has been advised of the possibility of such damages.
+
+   9. Accepting Warranty or Additional Liability. While redistributing
+      the Work or Derivative Works thereof, You may choose to offer,
+      and charge a fee for, acceptance of support, warranty, indemnity,
+      or other liability obligations and/or rights consistent with this
+      License. However, in accepting such obligations, You may act only
+      on Your own behalf and on Your sole responsibility, not on behalf
+      of any other Contributor, and only if You agree to indemnify,
+      defend, and hold each Contributor harmless for any liability
+      incurred by, or claims asserted against, such Contributor by reason
+      of your accepting any such warranty or additional liability.
+
+   END OF TERMS AND CONDITIONS
+
+   APPENDIX: How to apply the Apache License to your work.
+
+      To apply the Apache License to your work, attach the following
+      boilerplate notice, with the fields enclosed by brackets "[]"
+      replaced with your own identifying information. (Don't include
+      the brackets!)  The text should be enclosed in the appropriate
+      comment syntax for the file format. We also recommend that a
+      file or class name and description of purpose be included on the
+      same "printed page" as the copyright notice for easier
+      identification within third-party archives.
+
+   Copyright [yyyy] [name of copyright owner]
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+
+File: lua/plugins/disabled.lua
+================================================
+return {
+  { "akinsho/bufferline.nvim", enabled = false },
+}
+
+
+File: lazyvim.json
+================================================
+{
+  "extras": [
+
+  ],
+  "news": {
+    "NEWS.md": "10960"
+  },
+  "version": 8
+}
+
+File: lua/config/lazy.lua
+================================================
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
+end
+vim.opt.rtp:prepend(lazypath)
+
+require("lazy").setup({
+  spec = {
+    -- add LazyVim and import its plugins
+    { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+    -- import/override with your plugins
+    { import = "plugins" },
+  },
+  defaults = {
+    -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
+    -- If you know what you're doing, you can set this to `true` to have all your custom plugins lazy-loaded by default.
+    lazy = false,
+    -- It's recommended to leave version=false for now, since a lot the plugin that support versioning,
+    -- have outdated releases, which may break your Neovim install.
+    version = false, -- always use the latest git commit
+    -- version = "*", -- try installing the latest stable version for plugins that support semver
+  },
+  install = { colorscheme = { "tokyonight", "habamax" } },
+  checker = {
+    enabled = true, -- check for plugin updates periodically
+    notify = false, -- notify on update
+  }, -- automatically check for plugin updates
+  performance = {
+    rtp = {
+      -- disable some rtp plugins
+      disabled_plugins = {
+        "gzip",
+        -- "matchit",
+        -- "matchparen",
+        -- "netrwPlugin",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+      },
+    },
+  },
+})
+
+
+File: lua/plugins/treesitter.lua
+================================================
+return {
+  "nvim-treesitter/nvim-treesitter",
+  opts = {
+    ensure_installed = {
+      "svelte",
+    },
+  },
+}
+
+File: codebase.txt
+================================================
+Directory Structure:
+└── LICENSE
+└── README.md
+└── init.lua
+└── lazy-lock.json
+└── lazyvim.json
+├── lua/
+  ├── config/
+    └── autocmds.lua
+    └── keymaps.lua
+    └── lazy.lua
+    └── options.lua
+  ├── plugins/
+    └── alpha.lua
+    └── disabled.lua
+    └── emmet.lua
+    └── example.lua
+    └── init.lua
+    └── nvim-cmp.lua
+    └── svelte.lua
+    └── treesitter.lua
+  ├── timkl/
+    └── options.lua
+└── stylua.toml
+
+File Contents:
+
+File: lua/config/options.lua
+================================================
+-- Options are automatically loaded before lazy.nvim startup
+-- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
+-- Add any additional options here
+
+
+File: lua/config/autocmds.lua
+================================================
+-- Autocmds are automatically loaded on the VeryLazy event
+-- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
+-- Add any additional autocmds here
+
+
+File: lua/plugins/nvim-cmp.lua
+================================================
+return {
+  "hrsh7th/nvim-cmp",
+  ---@param opts cmp.ConfigSchema
+  opts = function(_, opts)
+    local has_words_before = function()
+      unpack = unpack or table.unpack
+      local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+      return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+    end
+
+    local cmp = require("cmp")
+
+    opts.mapping = vim.tbl_extend("force", opts.mapping, {
+      ["<Tab>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          -- You could replace select_next_item() with confirm({ select = true }) to get VS Code autocompletion behavior
+          cmp.select_next_item()
+        elseif vim.snippet.active({ direction = 1 }) then
+          vim.schedule(function()
+            vim.snippet.jump(1)
+          end)
+        elseif has_words_before() then
+          cmp.complete()
+        else
+          fallback()
+        end
+      end, { "i", "s" }),
+      ["<S-Tab>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          cmp.select_prev_item()
+        elseif vim.snippet.active({ direction = -1 }) then
+          vim.schedule(function()
+            vim.snippet.jump(-1)
+          end)
+        else
+          fallback()
+        end
+      end, { "i", "s" }),
+    })
+  end,
+}
+
+
+File: lua/timkl/options.lua
+================================================
+-- ~/.config/nvim/lua/user/options.lua
+vim.opt.relativenumber = true -- Shows relative line numbers
+vim.opt.number = true -- Shows the absolute number for the current line
+vim.opt.linebreak = true -- Wrap lines at word boundaries
+
+vim.opt.swapfile = false
+
+
+File: lua/plugins/alpha.lua
+================================================
+return {
+  "goolord/alpha-nvim",
+  event = "VimEnter",
+  config = function()
+    local alpha = require("alpha")
+    local dashboard = require("alpha.themes.dashboard")
+
+    local quotes = {
+      "Reality is that which, when you stop believing in it, doesn't go away. — Philip K. Dick",
+      "Freedom begins between the ears. — Edward Abbey",
+      "Knowledge, like air, is vital to life. Like air, no one should be denied it. — Alan Moore",
+      "Man is the only creature who refuses to be what he is. — Albert Camus",
+      "To live is to suffer, to survive is to find some meaning in the suffering. — Friedrich Nietzsche",
+      "We are what we repeatedly do. Excellence, then, is not an act, but a habit. — Aristotle",
+      "In a time of deceit telling the truth is a revolutionary act. — George Orwell",
+      "Any sufficiently advanced technology is indistinguishable from magic. — Arthur C. Clarke",
+      "The only way to discover the limits of the possible is to go beyond them into the impossible. — Arthur C. Clarke",
+      "The best way to predict the future is to invent it. — Alan Kay",
+      "The future belongs to those who prepare for it today. — Malcolm X",
+      "Life can only be understood backwards; but it must be lived forwards. — Søren Kierkegaard",
+      "Anxiety is the dizziness of freedom. — Søren Kierkegaard",
+      "People demand freedom of speech as a compensation for the freedom of thought which they seldom use. — Søren Kierkegaard",
+      "Once you label me you negate me. — Søren Kierkegaard",
+      "The tyrant dies and his rule is over, the martyr dies and his rule begins. — Søren Kierkegaard",
+      "The price of anything is the amount of life you exchange for it. — Henry David Thoreau",
+      "Those who would give up essential liberty to purchase a little temporary safety deserve neither liberty nor safety. — Benjamin Franklin",
+      "The most common way people give up their power is by thinking they don't have any. — Alice Walker",
+      "The advancement of technology is based on making it fit in so that you don't really even notice it. — Bill Gates",
+      "The real problem is not whether machines think but whether men do. — B.F. Skinner",
+      "The purpose of technology is not to confuse the brain but to serve the body. — William S. Burroughs",
+      "The most important thing in communication is hearing what isn't said. — Peter Drucker",
+      "Courage is not the absence of fear, but rather the judgment that something else is more important than fear. — Ambrose Redmoon",
+      "There is no security on this earth; there is only opportunity. — Douglas MacArthur",
+      "Liberty means responsibility. That is why most men dread it. — George Bernard Shaw",
+      "The power of the people is much stronger than the people in power. — Wael Ghonim",
+      "Information is the currency of democracy. — Thomas Jefferson",
+      "First they ignore you, then they laugh at you, then they fight you, then you win. — Mahatma Gandhi",
+      "The only way to deal with an unfree world is to become so absolutely free that your very existence is an act of rebellion. — Albert Camus",
+      "One person with a belief is equal to a force of ninety-nine who have only interests. — John Stuart Mill",
+      "When exposing a crime is treated as committing a crime, you are ruled by criminals. — Edward Snowden",
+      "It's not a faith in technology. It's faith in people. — Steve Jobs",
+      "I do not fear computers. I fear the lack of them. — Isaac Asimov",
+      "Privacy is not an option, and it shouldn't be the price we accept for just getting on the Internet. — Gary Kovacs",
+      "The only thing necessary for the triumph of evil is for good men to do nothing. — Edmund Burke",
+      "What is freedom of expression? Without the freedom to offend, it ceases to exist. — Salman Rushdie",
+      "Life is not a problem to be solved, but a reality to be experienced. — Søren Kierkegaard",
+      "People settle for a level of despair they can tolerate and call it happiness. — Søren Kierkegaard",
+      "Our life always expresses the result of our dominant thoughts. — Søren Kierkegaard",
+      "He who is silent is forgotten; he who does not advance falls back. — Henrik Ibsen",
+      "To dare is to lose one's footing momentarily. Not to dare is to lose oneself. — Søren Kierkegaard",
+      "Every act of rebellion expresses a nostalgia for innocence and an appeal to the essence of being. — Albert Camus",
+      "The further a society drifts from truth the more it will hate those who speak it. — George Orwell",
+      "A single event can awaken within us a stranger totally unknown to us. — Antoine de Saint-Exupéry",
+      "The merit of all things lies in their difficulty. — Alexandre Dumas",
+      "Conformity is the jailer of freedom and the enemy of growth. — John F. Kennedy",
+      "They who can give up essential liberty to obtain a little temporary safety deserve neither liberty nor safety. — Benjamin Franklin",
+    }
+
+    -- Get a random quote
+    local quote = ""
+    if #quotes > 0 then
+      math.randomseed(os.time())
+      local idx = math.random(1, #quotes)
+      quote = quotes[idx]
+    end
+
+    -- Create a new section for the quote
+    dashboard.section.quote = {
+      type = "text",
+      val = quote,
+      opts = {
+        position = "center",
+        hl = function()
+          local line = quote
+          local emdash_pos = line:find("—")
+          if emdash_pos then
+            return {
+              { "DashboardQuote", 0, emdash_pos - 1 },
+              { "DashboardAuthor", emdash_pos - 1, #line },
+            }
+          else
+            return { { "DashboardQuote", 0, #line } }
+          end
+        end,
+      },
+    }
+
+    -- Set the ASCII art in its own section
+    dashboard.section.ascii = {
+      type = "text",
+      val = {
+        "   ________  ________  ________  ____ ___  _______ ",
+        "  ╱        ╲╱        ╲╱        ╲╱    ╱   ╲╱       ╲",
+        " ╱        __╱        ╱         ╱         ╱        ╱",
+        " ╱       ╱╱         ╱         ╱        _╱        ╱ ",
+        " ╲______╱ ╲________╱╲__╱__╱__╱╲____╱___╱╲________╱ ",
+      },
+      opts = {
+        position = "center",
+        hl = "DashboardHeader",
+      },
+    }
+
+    -- Define highlight groups
+    vim.cmd([[
+      hi DashboardQuote guifg=#00FF00 gui=italic
+      hi DashboardAuthor guifg=#00FF00 gui=NONE
+      hi DashboardHeader guifg=#FFFFFF
+    ]])
+
+    -- Set menu
+    dashboard.section.buttons.val = {
+      dashboard.button("SPC fr", "Recent Files", "<cmd>Telescope oldfiles<CR>"),
+      -- dashboard.button("e", "New File", "<cmd>ene<CR>"),
+      dashboard.button("SPC ee", "File Explorer", "<cmd>NvimTreeToggle<CR>"),
+      dashboard.button("SPC ff", "Find File", "<cmd>Telescope find_files<CR>"),
+      dashboard.button("SPC fs", "Find Word", "<cmd>Telescope live_grep<CR>"),
+      dashboard.button("u", "Update Plugins", "<cmd>Lazy update<CR>"),
+      dashboard.button("i", "Install Plugins", "<cmd>Lazy install<CR>"),
+      dashboard.button("q", "Quit", "<cmd>qa<CR>"),
+    }
+
+    -- Configure the layout
+    dashboard.config.layout = {
+      { type = "padding", val = 1 },
+      dashboard.section.quote,
+      { type = "padding", val = 1 },
+      dashboard.section.ascii,
+      { type = "padding", val = 2 },
+      dashboard.section.buttons,
+      { type = "padding", val = 1 },
+      dashboard.section.footer,
+    }
+
+    -- Send config to alpha
+    alpha.setup(dashboard.config)
+
+    -- Disable folding on alpha buffer
+    vim.cmd([[autocmd FileType alpha setlocal nofoldenable]])
+  end,
+}
+
+
+File: README.md
+================================================
+# 💤 LazyVim
+
+A starter template for [LazyVim](https://github.com/LazyVim/LazyVim).
+Refer to the [documentation](https://lazyvim.github.io/installation) to get started.
+
+
+File: lazyvim.json
+================================================
+{
+  "extras": [
+
+  ],
+  "news": {
+    "NEWS.md": "6520"
+  },
+  "version": 6
+}
+
+File: lua/config/keymaps.lua
+================================================
+-- Keymaps are automatically loaded on the VeryLazy event
+-- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
+-- Add any additional keymaps here
+
+
+File: LICENSE
+================================================
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      "Legal Entity" shall mean the union of the acting entity and all
+      other entities that control, are controlled by, or are under common
+      control with that entity. For the purposes of this definition,
+      "control" means (i) the power, direct or indirect, to cause the
+      direction or management of such entity, whether by contract or
+      otherwise, or (ii) ownership of fifty percent (50%) or more of the
+      outstanding shares, or (iii) beneficial ownership of such entity.
+
+      "You" (or "Your") shall mean an individual or Legal Entity
+      exercising permissions granted by this License.
+
+      "Source" form shall mean the preferred form for making modifications,
+      including but not limited to software source code, documentation
+      source, and configuration files.
+
+      "Object" form shall mean any form resulting from mechanical
+      transformation or translation of a Source form, including but
+      not limited to compiled object code, generated documentation,
+      and conversions to other media types.
+
+      "Work" shall mean the work of authorship, whether in Source or
+      Object form, made available under the License, as indicated by a
+      copyright notice that is included in or attached to the work
+      (an example is provided in the Appendix below).
+
+      "Derivative Works" shall mean any work, whether in Source or Object
+      form, that is based on (or derived from) the Work and for which the
+      editorial revisions, annotations, elaborations, or other modifications
+      represent, as a whole, an original work of authorship. For the purposes
+      of this License, Derivative Works shall not include works that remain
+      separable from, or merely link (or bind by name) to the interfaces of,
+      the Work and Derivative Works thereof.
+
+      "Contribution" shall mean any work of authorship, including
+      the original version of the Work and any modifications or additions
+      to that Work or Derivative Works thereof, that is intentionally
+      submitted to Licensor for inclusion in the Work by the copyright owner
+      or by an individual or Legal Entity authorized to submit on behalf of
+      the copyright owner. For the purposes of this definition, "submitted"
+      means any form of electronic, verbal, or written communication sent
+      to the Licensor or its representatives, including but not limited to
+      communication on electronic mailing lists, source code control systems,
+      and issue tracking systems that are managed by, or on behalf of, the
+      Licensor for the purpose of discussing and improving the Work, but
+      excluding communication that is conspicuously marked or otherwise
+      designated in writing by the copyright owner as "Not a Contribution."
+
+      "Contributor" shall mean Licensor and any individual or Legal Entity
+      on behalf of whom a Contribution has been received by Licensor and
+      subsequently incorporated within the Work.
+
+   2. Grant of Copyright License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      copyright license to reproduce, prepare Derivative Works of,
+      publicly display, publicly perform, sublicense, and distribute the
+      Work and such Derivative Works in Source or Object form.
+
+   3. Grant of Patent License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      (except as stated in this section) patent license to make, have made,
+      use, offer to sell, sell, import, and otherwise transfer the Work,
+      where such license applies only to those patent claims licensable
+      by such Contributor that are necessarily infringed by their
+      Contribution(s) alone or by combination of their Contribution(s)
+      with the Work to which such Contribution(s) was submitted. If You
+      institute patent litigation against any entity (including a
+      cross-claim or counterclaim in a lawsuit) alleging that the Work
+      or a Contribution incorporated within the Work constitutes direct
+      or contributory patent infringement, then any patent licenses
+      granted to You under this License for that Work shall terminate
+      as of the date such litigation is filed.
+
+   4. Redistribution. You may reproduce and distribute copies of the
+      Work or Derivative Works thereof in any medium, with or without
+      modifications, and in Source or Object form, provided that You
+      meet the following conditions:
+
+      (a) You must give any other recipients of the Work or
+          Derivative Works a copy of this License; and
+
+      (b) You must cause any modified files to carry prominent notices
+          stating that You changed the files; and
+
+      (c) You must retain, in the Source form of any Derivative Works
+          that You distribute, all copyright, patent, trademark, and
+          attribution notices from the Source form of the Work,
+          excluding those notices that do not pertain to any part of
+          the Derivative Works; and
+
+      (d) If the Work includes a "NOTICE" text file as part of its
+          distribution, then any Derivative Works that You distribute must
+          include a readable copy of the attribution notices contained
+          within such NOTICE file, excluding those notices that do not
+          pertain to any part of the Derivative Works, in at least one
+          of the following places: within a NOTICE text file distributed
+          as part of the Derivative Works; within the Source form or
+          documentation, if provided along with the Derivative Works; or,
+          within a display generated by the Derivative Works, if and
+          wherever such third-party notices normally appear. The contents
+          of the NOTICE file are for informational purposes only and
+          do not modify the License. You may add Your own attribution
+          notices within Derivative Works that You distribute, alongside
+          or as an addendum to the NOTICE text from the Work, provided
+          that such additional attribution notices cannot be construed
+          as modifying the License.
+
+      You may add Your own copyright statement to Your modifications and
+      may provide additional or different license terms and conditions
+      for use, reproduction, or distribution of Your modifications, or
+      for any such Derivative Works as a whole, provided Your use,
+      reproduction, and distribution of the Work otherwise complies with
+      the conditions stated in this License.
+
+   5. Submission of Contributions. Unless You explicitly state otherwise,
+      any Contribution intentionally submitted for inclusion in the Work
+      by You to the Licensor shall be under the terms and conditions of
+      this License, without any additional terms or conditions.
+      Notwithstanding the above, nothing herein shall supersede or modify
+      the terms of any separate license agreement you may have executed
+      with Licensor regarding such Contributions.
+
+   6. Trademarks. This License does not grant permission to use the trade
+      names, trademarks, service marks, or product names of the Licensor,
+      except as required for reasonable and customary use in describing the
+      origin of the Work and reproducing the content of the NOTICE file.
+
+   7. Disclaimer of Warranty. Unless required by applicable law or
+      agreed to in writing, Licensor provides the Work (and each
+      Contributor provides its Contributions) on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+      implied, including, without limitation, any warranties or conditions
+      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
+      PARTICULAR PURPOSE. You are solely responsible for determining the
+      appropriateness of using or redistributing the Work and assume any
+      risks associated with Your exercise of permissions under this License.
+
+   8. Limitation of Liability. In no event and under no legal theory,
+      whether in tort (including negligence), contract, or otherwise,
+      unless required by applicable law (such as deliberate and grossly
+      negligent acts) or agreed to in writing, shall any Contributor be
+      liable to You for damages, including any direct, indirect, special,
+      incidental, or consequential damages of any character arising as a
+      result of this License or out of the use or inability to use the
+      Work (including but not limited to damages for loss of goodwill,
+      work stoppage, computer failure or malfunction, or any and all
+      other commercial damages or losses), even if such Contributor
+      has been advised of the possibility of such damages.
+
+   9. Accepting Warranty or Additional Liability. While redistributing
+      the Work or Derivative Works thereof, You may choose to offer,
+      and charge a fee for, acceptance of support, warranty, indemnity,
+      or other liability obligations and/or rights consistent with this
+      License. However, in accepting such obligations, You may act only
+      on Your own behalf and on Your sole responsibility, not on behalf
+      of any other Contributor, and only if You agree to indemnify,
+      defend, and hold each Contributor harmless for any liability
+      incurred by, or claims asserted against, such Contributor by reason
+      of your accepting any such warranty or additional liability.
+
+   END OF TERMS AND CONDITIONS
+
+   APPENDIX: How to apply the Apache License to your work.
+
+      To apply the Apache License to your work, attach the following
+      boilerplate notice, with the fields enclosed by brackets "[]"
+      replaced with your own identifying information. (Don't include
+      the brackets!)  The text should be enclosed in the appropriate
+      comment syntax for the file format. We also recommend that a
+      file or class name and description of purpose be included on the
+      same "printed page" as the copyright notice for easier
+      identification within third-party archives.
+
+   Copyright [yyyy] [name of copyright owner]
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+
+File: lua/plugins/disabled.lua
+================================================
+return {
+  { "akinsho/bufferline.nvim", enabled = false },
+}
+
+
+File: lua/plugins/init.lua
+================================================
+-- ~/.config/nvim/lua/plugins/init.lua
+
+return {
+  -- Other plugins here
+
+  {
+    "ThePrimeagen/vim-be-good", -- The plugin's GitHub repository
+    cmd = "VimBeGood", -- Load only when the VimBeGood command is called (optional)
+  },
+}
+
+
+File: lazy-lock.json
+================================================
+{
+  "LazyVim": { "branch": "main", "commit": "13a4a84e3485a36e64055365665a45dc82b6bf71" },
+  "alpha-nvim": { "branch": "main", "commit": "bf3c8bb8c02ed3d9644cc5bbc48e2bdc39349cd7" },
+  "bufferline.nvim": { "branch": "main", "commit": "0b2fd861eee7595015b6561dade52fb060be10c4" },
+  "catppuccin": { "branch": "main", "commit": "ea02cc8c3c053c6c1c574e0791d743338e3e788f" },
+  "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },
+  "cmp-nvim-lsp": { "branch": "main", "commit": "39e2eda76828d88b773cc27a3f61d2ad782c922d" },
+  "cmp-path": { "branch": "main", "commit": "91ff86cd9c29299a64f968ebb45846c485725f23" },
+  "conform.nvim": { "branch": "master", "commit": "f5bd8419f8a29451e20bdb1061a54fe13d5c8de3" },
+  "dashboard-nvim": { "branch": "master", "commit": "d2c5a4d1341f5ca1ed2ecb4ecfcff2bc8ea18b14" },
+  "dressing.nvim": { "branch": "master", "commit": "1b7921eecc65af1baf8ac1dc06f0794934cbcfb2" },
+  "emmet-vim": { "branch": "master", "commit": "6c511a8d7d2863066f32e25543e2bb99d505172c" },
+  "flash.nvim": { "branch": "main", "commit": "34c7be146a91fec3555c33fe89c7d643f6ef5cf1" },
+  "friendly-snippets": { "branch": "main", "commit": "de8fce94985873666bd9712ea3e49ee17aadb1ed" },
+  "gitsigns.nvim": { "branch": "main", "commit": "ee7634ab4f0a6606438fe13e16cbf2065589a5ed" },
+  "grug-far.nvim": { "branch": "main", "commit": "190c03d54e8976491e6e49acb97087bf4182b079" },
+  "indent-blankline.nvim": { "branch": "master", "commit": "e7a4442e055ec953311e77791546238d1eaae507" },
+  "lazy.nvim": { "branch": "main", "commit": "077102c5bfc578693f12377846d427f49bc50076" },
+  "lazydev.nvim": { "branch": "main", "commit": "491452cf1ca6f029e90ad0d0368848fac717c6d2" },
+  "lualine.nvim": { "branch": "master", "commit": "b431d228b7bbcdaea818bdc3e25b8cdbe861f056" },
+  "luvit-meta": { "branch": "main", "commit": "ce76f6f6cdc9201523a5875a4471dcfe0186eb60" },
+  "mason-lspconfig.nvim": { "branch": "main", "commit": "25c11854aa25558ee6c03432edfa0df0217324be" },
+  "mason.nvim": { "branch": "main", "commit": "e2f7f9044ec30067bc11800a9e266664b88cda22" },
+  "mini.ai": { "branch": "main", "commit": "9b9b7cfa38b4871c3e44cfe89cf6d53fd40684d9" },
+  "mini.icons": { "branch": "main", "commit": "a2742459f0ee32806c2438ca06b4d8b331f3f4d4" },
+  "mini.pairs": { "branch": "main", "commit": "7e834c5937d95364cc1740e20d673afe2d034cdb" },
+  "neo-tree.nvim": { "branch": "main", "commit": "a77af2e764c5ed4038d27d1c463fa49cd4794e07" },
+  "noice.nvim": { "branch": "main", "commit": "df448c649ef6bc5a6a633a44f2ad0ed8d4442499" },
+  "nui.nvim": { "branch": "main", "commit": "b58e2bfda5cea347c9d58b7f11cf3012c7b3953f" },
+  "nvim-cmp": { "branch": "main", "commit": "82bd4b59432d44cf5e2a5ce3a40a037a575a6623" },
+  "nvim-lint": { "branch": "master", "commit": "16b21a7d04d06661f92f273a0744fd81fb19e09e" },
+  "nvim-lspconfig": { "branch": "master", "commit": "84f867753f659bfd9319f75bd5eb273a315f2da5" },
+  "nvim-notify": { "branch": "master", "commit": "fbef5d32be8466dd76544a257d3f3dce20082a07" },
+  "nvim-snippets": { "branch": "main", "commit": "56b4052f71220144689caaa2e5b66222ba5661eb" },
+  "nvim-treesitter": { "branch": "master", "commit": "18cf02f5efe677d992fe7f96f395ef40a2f329d2" },
+  "nvim-treesitter-textobjects": { "branch": "master", "commit": "0d79d169fcd45a8da464727ac893044728f121d4" },
+  "nvim-ts-autotag": { "branch": "main", "commit": "e239a560f338be31337e7abc3ee42515daf23f5e" },
+  "persistence.nvim": { "branch": "main", "commit": "f6aad7dde7fcf54148ccfc5f622c6d5badd0cc3d" },
+  "plenary.nvim": { "branch": "master", "commit": "2d9b06177a975543726ce5c73fca176cedbffe9d" },
+  "telescope-fzf-native.nvim": { "branch": "main", "commit": "cf48d4dfce44e0b9a2e19a008d6ec6ea6f01a83b" },
+  "telescope.nvim": { "branch": "master", "commit": "df534c3042572fb958586facd02841e10186707c" },
+  "todo-comments.nvim": { "branch": "main", "commit": "ae0a2afb47cf7395dc400e5dc4e05274bf4fb9e0" },
+  "tokyonight.nvim": { "branch": "main", "commit": "2c85fad417170d4572ead7bf9fdd706057bd73d7" },
+  "trouble.nvim": { "branch": "main", "commit": "254145ffd528b98eb20be894338e2d5c93fa02c2" },
+  "ts-comments.nvim": { "branch": "main", "commit": "98d7d4dec0af1312d38e288f800bbf6ff562b6ab" },
+  "vim-be-good": { "branch": "master", "commit": "4fa57b7957715c91326fcead58c1fa898b9b3625" },
+  "vim-svelte-plugin": { "branch": "master", "commit": "3939edd26188685ca496759641b7f8209d0e2e0e" },
+  "which-key.nvim": { "branch": "main", "commit": "8badb359f7ab8711e2575ef75dfe6fbbd87e4821" }
+}
+
+
+File: lua/plugins/emmet.lua
+================================================
+return {
+  "mattn/emmet-vim",
+  ft = { "html", "css", "javascript", "javascriptreact", "typescript", "typescriptreact", "svelte", "vue" },
+  init = function()
+    -- Enable emmet for specific filetypes
+    vim.g.user_emmet_install_global = 0
+    vim.cmd [[autocmd FileType html,css,javascript,javascriptreact,typescript,typescriptreact,svelte,vue EmmetInstall]]
+    
+    -- Configure emmet leader key (default is <C-y>)
+    vim.g.user_emmet_leader_key = '<C-e>'
+    
+    -- Enable emmet expansion with Tab key
+    vim.g.user_emmet_expandabbr_key = '<Tab>'
+    
+    -- Only enable Tab expansion in insert and visual modes
+    vim.g.user_emmet_mode = 'iv'
+  end,
+}
+
+File: init.lua
+================================================
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")
+require("timkl.options")
+
+vim.cmd("highlight Normal guibg=none")
+vim.cmd("highlight NonText guibg=none")
+
+vim.cmd([[
+  highlight TelescopeNormal guibg=none
+  highlight TelescopeBorder guibg=none
+  highlight TelescopePromptNormal guibg=none
+  highlight TelescopePromptBorder guibg=none
+  highlight TelescopeResultsNormal guibg=none
+  highlight TelescopeResultsBorder guibg=none
+  highlight TelescopePreviewNormal guibg=none
+  highlight TelescopePreviewBorder guibg=none
+]])
+
+-- Set color scheme and transparency globally
+vim.o.background = "dark" -- Dark background
+
+-- Transparency for main window and splits
+vim.cmd([[
+  highlight Normal guibg=NONE ctermbg=NONE
+  highlight NonText guibg=NONE ctermbg=NONE
+  highlight NormalFloat guibg=NONE ctermbg=NONE
+  highlight NormalNC guibg=NONE ctermbg=NONE
+  highlight LineNr guibg=NONE ctermbg=NONE
+  highlight CursorLineNr guibg=NONE ctermbg=NONE
+]])
+
+-- Which-Key transparency
+vim.cmd([[
+  highlight WhichKeyFloat guibg=NONE ctermbg=NONE
+  highlight WhichKeyBorder guibg=NONE ctermbg=NONE
+  highlight NormalFloat guibg=NONE ctermbg=NONE
+  highlight FloatBorder guibg=NONE ctermbg=NONE
+]])
+
+-- File explorer transparency for NvimTree and NeoTree (depending on your setup)
+vim.cmd([[
+  highlight NvimTreeNormal guibg=NONE ctermbg=NONE
+  highlight NvimTreeEndOfBuffer guibg=NONE ctermbg=NONE
+  highlight NvimTreeNormalNC guibg=NONE ctermbg=NONE
+  highlight NeoTreeNormal guibg=NONE ctermbg=NONE
+  highlight NeoTreeEndOfBuffer guibg=NONE ctermbg=NONE
+  highlight NeoTreeNormalNC guibg=NONE ctermbg=NONE
+]])
+
+-- Telescope transparency
+vim.cmd([[
+  highlight TelescopeNormal guibg=NONE ctermbg=NONE
+  highlight TelescopeBorder guibg=NONE ctermbg=NONE
+]])
+
+-- General floating windows (covering all possibilities for floating transparency)
+vim.cmd([[
+  highlight Pmenu guibg=NONE ctermbg=NONE
+  highlight PmenuSel guibg=NONE ctermbg=NONE
+  highlight FloatBorder guibg=NONE ctermbg=NONE
+]])
+
+vim.cmd([[
+  highlight CursorLine guibg=#394264
+]])
+
+vim.cmd([[
+  highlight Visual guibg=#394264
+]])
+
+-- Add this to your init.lua or a separate lua/colors.lua file
+vim.cmd([[
+  highlight Pmenu guibg=#2e3440 guifg=#d8dee9
+  highlight PmenuSel guibg=#4c566a guifg=#ffffff
+  highlight PmenuSbar guibg=#4c566a
+  highlight PmenuThumb guibg=#ffffff
+]])
+
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>fl",
+  ":lua require('telescope.builtin').live_grep({ search_dirs = vim.tbl_map(function(bufnr) return vim.fn.bufname(bufnr) end, vim.api.nvim_list_bufs()) })<CR>",
+  { noremap = true, silent = true }
+)
+
+
+File: lua/plugins/treesitter.lua
+================================================
+return {
+  "nvim-treesitter/nvim-treesitter",
+  opts = {
+    ensure_installed = {
+      "svelte",
+    },
+  },
+}
+
+File: stylua.toml
+================================================
+indent_type = "Spaces"
+indent_width = 2
+column_width = 120
+
+File: lua/config/lazy.lua
+================================================
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
+end
+vim.opt.rtp:prepend(lazypath)
+
+require("lazy").setup({
+  spec = {
+    -- add LazyVim and import its plugins
+    { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+    -- import/override with your plugins
+    { import = "plugins" },
+  },
+  defaults = {
+    -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
+    -- If you know what you're doing, you can set this to `true` to have all your custom plugins lazy-loaded by default.
+    lazy = false,
+    -- It's recommended to leave version=false for now, since a lot the plugin that support versioning,
+    -- have outdated releases, which may break your Neovim install.
+    version = false, -- always use the latest git commit
+    -- version = "*", -- try installing the latest stable version for plugins that support semver
+  },
+  install = { colorscheme = { "tokyonight", "habamax" } },
+  checker = {
+    enabled = true, -- check for plugin updates periodically
+    notify = false, -- notify on update
+  }, -- automatically check for plugin updates
+  performance = {
+    rtp = {
+      -- disable some rtp plugins
+      disabled_plugins = {
+        "gzip",
+        -- "matchit",
+        -- "matchparen",
+        -- "netrwPlugin",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+      },
+    },
+  },
+})
+
+
+File: lua/plugins/example.lua
+================================================
+-- since this is just an example spec, don't actually load anything here and return an empty spec
+-- stylua: ignore
+if true then return {} end
+
+-- every spec file under the "plugins" directory will be loaded automatically by lazy.nvim
+--
+-- In your plugin files, you can:
+-- * add extra plugins
+-- * disable/enabled LazyVim plugins
+-- * override the configuration of LazyVim plugins
+return {
+  -- add gruvbox
+  { "ellisonleao/gruvbox.nvim" },
+
+  -- Configure LazyVim to load gruvbox
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "gruvbox",
+    },
+  },
+
+  -- change trouble config
+  {
+    "folke/trouble.nvim",
+    -- opts will be merged with the parent spec
+    opts = { use_diagnostic_signs = true },
+  },
+
+  -- disable trouble
+  { "folke/trouble.nvim", enabled = false },
+
+  -- override nvim-cmp and add cmp-emoji
+  {
+    "hrsh7th/nvim-cmp",
+    dependencies = { "hrsh7th/cmp-emoji" },
+    ---@param opts cmp.ConfigSchema
+    opts = function(_, opts)
+      table.insert(opts.sources, { name = "emoji" })
+    end,
+  },
+
+  -- change some telescope options and a keymap to browse plugin files
+  {
+    "nvim-telescope/telescope.nvim",
+    keys = {
+      -- add a keymap to browse plugin files
+      -- stylua: ignore
+      {
+        "<leader>fp",
+        function() require("telescope.builtin").find_files({ cwd = require("lazy.core.config").options.root }) end,
+        desc = "Find Plugin File",
+      },
+    },
+    -- change some options
+    opts = {
+      defaults = {
+        layout_strategy = "horizontal",
+        layout_config = { prompt_position = "top" },
+        sorting_strategy = "ascending",
+        winblend = 0,
+      },
+    },
+  },
+
+  -- add pyright to lspconfig
+  {
+    "neovim/nvim-lspconfig",
+    ---@class PluginLspOpts
+    opts = {
+      ---@type lspconfig.options
+      servers = {
+        -- pyright will be automatically installed with mason and loaded with lspconfig
+        pyright = {},
+      },
+    },
+  },
+
+  -- add tsserver and setup with typescript.nvim instead of lspconfig
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      "jose-elias-alvarez/typescript.nvim",
+      init = function()
+        require("lazyvim.util").lsp.on_attach(function(_, buffer)
+          -- stylua: ignore
+          vim.keymap.set( "n", "<leader>co", "TypescriptOrganizeImports", { buffer = buffer, desc = "Organize Imports" })
+          vim.keymap.set("n", "<leader>cR", "TypescriptRenameFile", { desc = "Rename File", buffer = buffer })
+        end)
+      end,
+    },
+    ---@class PluginLspOpts
+    opts = {
+      ---@type lspconfig.options
+      servers = {
+        -- tsserver will be automatically installed with mason and loaded with lspconfig
+        tsserver = {},
+      },
+      -- you can do any additional lsp server setup here
+      -- return true if you don't want this server to be setup with lspconfig
+      ---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
+      setup = {
+        -- example to setup with typescript.nvim
+        tsserver = function(_, opts)
+          require("typescript").setup({ server = opts })
+          return true
+        end,
+        -- Specify * to use this function as a fallback for any server
+        -- ["*"] = function(server, opts) end,
+      },
+    },
+  },
+
+  -- for typescript, LazyVim also includes extra specs to properly setup lspconfig,
+  -- treesitter, mason and typescript.nvim. So instead of the above, you can use:
+  { import = "lazyvim.plugins.extras.lang.typescript" },
+
+  -- add more treesitter parsers
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "bash",
+        "html",
+        "javascript",
+        "json",
+        "lua",
+        "markdown",
+        "markdown_inline",
+        "python",
+        "query",
+        "regex",
+        "tsx",
+        "typescript",
+        "vim",
+        "yaml",
+      },
+    },
+  },
+
+  -- since `vim.tbl_deep_extend`, can only merge tables and not lists, the code above
+  -- would overwrite `ensure_installed` with the new value.
+  -- If you'd rather extend the default config, use the code below instead:
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = function(_, opts)
+      -- add tsx and treesitter
+      vim.list_extend(opts.ensure_installed, {
+        "tsx",
+        "typescript",
+      })
+    end,
+  },
+
+  -- the opts function can also be used to change the default opts:
+  {
+    "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
+    opts = function(_, opts)
+      table.insert(opts.sections.lualine_x, "😄")
+    end,
+  },
+
+  -- or you can return new options to override all the defaults
+  {
+    "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
+    opts = function()
+      return {
+        --[[add your custom lualine config here]]
+      }
+    end,
+  },
+
+  -- use mini.starter instead of alpha
+  { import = "lazyvim.plugins.extras.ui.mini-starter" },
+
+  -- add jsonls and schemastore packages, and setup treesitter for json, json5 and jsonc
+  { import = "lazyvim.plugins.extras.lang.json" },
+
+  -- add any tools you want to have installed below
+  {
+    "williamboman/mason.nvim",
+    opts = {
+      ensure_installed = {
+        "stylua",
+        "shellcheck",
+        "shfmt",
+        "flake8",
+      },
+    },
+  },
+}
+
+
+File: lua/plugins/svelte.lua
+================================================
+return {
+  {
+    "leafOfTree/vim-svelte-plugin",
+    ft = { "svelte" },
+    config = function()
+      vim.g.vim_svelte_plugin_use_typescript = 1
+      vim.g.vim_svelte_plugin_use_sass = 1
+      vim.g.vim_svelte_plugin_use_pug = 0
+    end,
+  },
+  {
+    "neovim/nvim-lspconfig",
+    opts = function(_, opts)
+      require("lspconfig").svelte.setup({})
+    end,
+  },
+}
+
+
+Summary:
+Total files: 19
+Total size: 37235 bytes
+
+
+File: lua/plugins/alpha.lua
+================================================
+return {
+  "goolord/alpha-nvim",
+  event = "VimEnter",
+  config = function()
+    local alpha = require("alpha")
+    local dashboard = require("alpha.themes.dashboard")
+
+    local quotes = {
+      "Reality is that which, when you stop believing in it, doesn't go away. — Philip K. Dick",
+      "Freedom begins between the ears. — Edward Abbey",
+      "Knowledge, like air, is vital to life. Like air, no one should be denied it. — Alan Moore",
+      "Man is the only creature who refuses to be what he is. — Albert Camus",
+      "To live is to suffer, to survive is to find some meaning in the suffering. — Friedrich Nietzsche",
+      "We are what we repeatedly do. Excellence, then, is not an act, but a habit. — Aristotle",
+      "In a time of deceit telling the truth is a revolutionary act. — George Orwell",
+      "Any sufficiently advanced technology is indistinguishable from magic. — Arthur C. Clarke",
+      "The only way to discover the limits of the possible is to go beyond them into the impossible. — Arthur C. Clarke",
+      "The best way to predict the future is to invent it. — Alan Kay",
+      "The future belongs to those who prepare for it today. — Malcolm X",
+      "Life can only be understood backwards; but it must be lived forwards. — Søren Kierkegaard",
+      "Anxiety is the dizziness of freedom. — Søren Kierkegaard",
+      "People demand freedom of speech as a compensation for the freedom of thought which they seldom use. — Søren Kierkegaard",
+      "Once you label me you negate me. — Søren Kierkegaard",
+      "The tyrant dies and his rule is over, the martyr dies and his rule begins. — Søren Kierkegaard",
+      "The price of anything is the amount of life you exchange for it. — Henry David Thoreau",
+      "Those who would give up essential liberty to purchase a little temporary safety deserve neither liberty nor safety. — Benjamin Franklin",
+      "The most common way people give up their power is by thinking they don't have any. — Alice Walker",
+      "The advancement of technology is based on making it fit in so that you don't really even notice it. — Bill Gates",
+      "The real problem is not whether machines think but whether men do. — B.F. Skinner",
+      "The purpose of technology is not to confuse the brain but to serve the body. — William S. Burroughs",
+      "The most important thing in communication is hearing what isn't said. — Peter Drucker",
+      "Courage is not the absence of fear, but rather the judgment that something else is more important than fear. — Ambrose Redmoon",
+      "There is no security on this earth; there is only opportunity. — Douglas MacArthur",
+      "Liberty means responsibility. That is why most men dread it. — George Bernard Shaw",
+      "The power of the people is much stronger than the people in power. — Wael Ghonim",
+      "Information is the currency of democracy. — Thomas Jefferson",
+      "First they ignore you, then they laugh at you, then they fight you, then you win. — Mahatma Gandhi",
+      "The only way to deal with an unfree world is to become so absolutely free that your very existence is an act of rebellion. — Albert Camus",
+      "One person with a belief is equal to a force of ninety-nine who have only interests. — John Stuart Mill",
+      "When exposing a crime is treated as committing a crime, you are ruled by criminals. — Edward Snowden",
+      "It's not a faith in technology. It's faith in people. — Steve Jobs",
+      "I do not fear computers. I fear the lack of them. — Isaac Asimov",
+      "Privacy is not an option, and it shouldn't be the price we accept for just getting on the Internet. — Gary Kovacs",
+      "The only thing necessary for the triumph of evil is for good men to do nothing. — Edmund Burke",
+      "What is freedom of expression? Without the freedom to offend, it ceases to exist. — Salman Rushdie",
+      "Life is not a problem to be solved, but a reality to be experienced. — Søren Kierkegaard",
+      "People settle for a level of despair they can tolerate and call it happiness. — Søren Kierkegaard",
+      "Our life always expresses the result of our dominant thoughts. — Søren Kierkegaard",
+      "He who is silent is forgotten; he who does not advance falls back. — Henrik Ibsen",
+      "To dare is to lose one's footing momentarily. Not to dare is to lose oneself. — Søren Kierkegaard",
+      "Every act of rebellion expresses a nostalgia for innocence and an appeal to the essence of being. — Albert Camus",
+      "The further a society drifts from truth the more it will hate those who speak it. — George Orwell",
+      "A single event can awaken within us a stranger totally unknown to us. — Antoine de Saint-Exupéry",
+      "The merit of all things lies in their difficulty. — Alexandre Dumas",
+      "Conformity is the jailer of freedom and the enemy of growth. — John F. Kennedy",
+      "They who can give up essential liberty to obtain a little temporary safety deserve neither liberty nor safety. — Benjamin Franklin",
+    }
+
+    -- Get a random quote
+    local quote = ""
+    if #quotes > 0 then
+      math.randomseed(os.time())
+      local idx = math.random(1, #quotes)
+      quote = quotes[idx]
+    end
+
+    -- Create a new section for the quote
+    dashboard.section.quote = {
+      type = "text",
+      val = quote,
+      opts = {
+        position = "center",
+        hl = function()
+          local line = quote
+          local emdash_pos = line:find("—")
+          if emdash_pos then
+            return {
+              { "DashboardQuote", 0, emdash_pos - 1 },
+              { "DashboardAuthor", emdash_pos - 1, #line },
+            }
+          else
+            return { { "DashboardQuote", 0, #line } }
+          end
+        end,
+      },
+    }
+
+    -- Set the ASCII art in its own section
+    dashboard.section.ascii = {
+      type = "text",
+      val = {
+        "   ________  ________  ________  ____ ___  _______ ",
+        "  ╱        ╲╱        ╲╱        ╲╱    ╱   ╲╱       ╲",
+        " ╱        __╱        ╱         ╱         ╱        ╱",
+        " ╱       ╱╱         ╱         ╱        _╱        ╱ ",
+        " ╲______╱ ╲________╱╲__╱__╱__╱╲____╱___╱╲________╱ ",
+      },
+      opts = {
+        position = "center",
+        hl = "DashboardHeader",
+      },
+    }
+
+    -- Define highlight groups
+    vim.cmd([[
+      hi DashboardQuote guifg=#00FF00 gui=italic
+      hi DashboardAuthor guifg=#00FF00 gui=NONE
+      hi DashboardHeader guifg=#FFFFFF
+    ]])
+
+    -- Set menu
+    dashboard.section.buttons.val = {
+      dashboard.button("SPC fr", "Recent Files", "<cmd>Telescope oldfiles<CR>"),
+      -- dashboard.button("e", "New File", "<cmd>ene<CR>"),
+      dashboard.button("SPC ee", "File Explorer", "<cmd>NvimTreeToggle<CR>"),
+      dashboard.button("SPC ff", "Find File", "<cmd>Telescope find_files<CR>"),
+      dashboard.button("SPC fs", "Find Word", "<cmd>Telescope live_grep<CR>"),
+      dashboard.button("u", "Update Plugins", "<cmd>Lazy update<CR>"),
+      dashboard.button("i", "Install Plugins", "<cmd>Lazy install<CR>"),
+      dashboard.button("q", "Quit", "<cmd>qa<CR>"),
+    }
+
+    -- Configure the layout
+    dashboard.config.layout = {
+      { type = "padding", val = 1 },
+      dashboard.section.quote,
+      { type = "padding", val = 1 },
+      dashboard.section.ascii,
+      { type = "padding", val = 2 },
+      dashboard.section.buttons,
+      { type = "padding", val = 1 },
+      dashboard.section.footer,
+    }
+
+    -- Send config to alpha
+    alpha.setup(dashboard.config)
+
+    -- Disable folding on alpha buffer
+    vim.cmd([[autocmd FileType alpha setlocal nofoldenable]])
+  end,
+}
+
+
+File: lua/plugins/init.lua
+================================================
+-- ~/.config/nvim/lua/plugins/init.lua
+
+return {
+  -- Other plugins here
+
+  {
+    "ThePrimeagen/vim-be-good", -- The plugin's GitHub repository
+    cmd = "VimBeGood", -- Load only when the VimBeGood command is called (optional)
+  },
+}
+
+
+File: lazy-lock.json
+================================================
+{
+  "LazyVim": { "branch": "main", "commit": "3f034d0a7f58031123300309f2efd3bb0356ee21" },
+  "alpha-nvim": { "branch": "main", "commit": "de72250e054e5e691b9736ee30db72c65d560771" },
+  "blink.cmp": { "branch": "main", "commit": "4f38ce99a472932d5776337f08f7a8180f1f571a" },
+  "bufferline.nvim": { "branch": "main", "commit": "0b2fd861eee7595015b6561dade52fb060be10c4" },
+  "catppuccin": { "branch": "main", "commit": "1bf070129c0b6f77cc23f6a2212dcdc868308c52" },
+  "conform.nvim": { "branch": "master", "commit": "372fc521f8421b7830ea6db4d6ea3bae1c77548c" },
+  "emmet-vim": { "branch": "master", "commit": "6c511a8d7d2863066f32e25543e2bb99d505172c" },
+  "flash.nvim": { "branch": "main", "commit": "3c942666f115e2811e959eabbdd361a025db8b63" },
+  "friendly-snippets": { "branch": "main", "commit": "572f5660cf05f8cd8834e096d7b4c921ba18e175" },
+  "fzf-lua": { "branch": "main", "commit": "02def6b972d7687866738d6f6a5f4839ce5b5a7a" },
+  "gitsigns.nvim": { "branch": "main", "commit": "43b0c856ae5f32a195d83f4a27fe21d63e6c966c" },
+  "golf": { "branch": "main", "commit": "abf1bc0c1c4a5482b4a4b36b950b49aaa0f39e69" },
+  "grug-far.nvim": { "branch": "main", "commit": "78c8d27c6f3300bfa92bb535236732d8e9bcb614" },
+  "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
+  "lazydev.nvim": { "branch": "main", "commit": "2367a6c0a01eb9edb0464731cc0fb61ed9ab9d2c" },
+  "lualine.nvim": { "branch": "master", "commit": "15884cee63a8c205334ab13ab1c891cd4d27101a" },
+  "mason-lspconfig.nvim": { "branch": "main", "commit": "d39a75bbce4b8aad5d627191ea915179c77c100f" },
+  "mason.nvim": { "branch": "main", "commit": "7c7318e8bae7e3536ef6b9e86b9e38e74f2e125e" },
+  "mini.ai": { "branch": "main", "commit": "e139eb1101beb0250fea322f8c07a42f0f175688" },
+  "mini.icons": { "branch": "main", "commit": "397ed3807e96b59709ef3292f0a3e253d5c1dc0a" },
+  "mini.pairs": { "branch": "main", "commit": "69864a2efb36c030877421634487fd90db1e4298" },
+  "neo-tree.nvim": { "branch": "main", "commit": "f481de16a0eb59c985abac8985e3f2e2f75b4875" },
+  "noice.nvim": { "branch": "main", "commit": "0427460c2d7f673ad60eb02b35f5e9926cf67c59" },
+  "nui.nvim": { "branch": "main", "commit": "f535005e6ad1016383f24e39559833759453564e" },
+  "nvim-cmp": { "branch": "main", "commit": "b5311ab3ed9c846b585c0c15b7559be131ec4be9" },
+  "nvim-lint": { "branch": "master", "commit": "9dfb77ef6c5092a19502883c02dc5a02ec648729" },
+  "nvim-lspconfig": { "branch": "master", "commit": "4bc481b6f0c0cf3671fc894debd0e00347089a4e" },
+  "nvim-treesitter": { "branch": "master", "commit": "28d480e0624b259095e56f353ec911f9f2a0f404" },
+  "nvim-treesitter-textobjects": { "branch": "master", "commit": "0e3be38005e9673d044e994b1e4b123adb040179" },
+  "nvim-ts-autotag": { "branch": "main", "commit": "a1d526af391f6aebb25a8795cbc05351ed3620b5" },
+  "persistence.nvim": { "branch": "main", "commit": "166a79a55bfa7a4db3e26fc031b4d92af71d0b51" },
+  "plenary.nvim": { "branch": "master", "commit": "857c5ac632080dba10aae49dba902ce3abf91b35" },
+  "snacks.nvim": { "branch": "main", "commit": "bc0630e43be5699bb94dadc302c0d21615421d93" },
+  "todo-comments.nvim": { "branch": "main", "commit": "304a8d204ee787d2544d8bc23cd38d2f929e7cc5" },
+  "tokyonight.nvim": { "branch": "main", "commit": "057ef5d260c1931f1dffd0f052c685dcd14100a3" },
+  "trouble.nvim": { "branch": "main", "commit": "85bedb7eb7fa331a2ccbecb9202d8abba64d37b3" },
+  "ts-comments.nvim": { "branch": "main", "commit": "1bd9d0ba1d8b336c3db50692ffd0955fe1bb9f0c" },
+  "vim-be-good": { "branch": "master", "commit": "0ae3de14eb8efc6effe7704b5e46495e91931cc5" },
+  "vim-svelte-plugin": { "branch": "master", "commit": "f80ff67a94e3ac279fe55ecdf55ad7342f4a5228" },
+  "which-key.nvim": { "branch": "main", "commit": "370ec46f710e058c9c1646273e6b225acf47cbed" }
+}
+
+
+File: init.lua
+================================================
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")
+require("timkl.options")
+
+vim.cmd("highlight Normal guibg=none")
+vim.cmd("highlight NonText guibg=none")
+
+vim.cmd([[
+  highlight TelescopeNormal guibg=none
+  highlight TelescopeBorder guibg=none
+  highlight TelescopePromptNormal guibg=none
+  highlight TelescopePromptBorder guibg=none
+  highlight TelescopeResultsNormal guibg=none
+  highlight TelescopeResultsBorder guibg=none
+  highlight TelescopePreviewNormal guibg=none
+  highlight TelescopePreviewBorder guibg=none
+]])
+
+-- Set color scheme and transparency globally
+vim.o.background = "dark" -- Dark background
+
+-- Transparency for main window and splits
+vim.cmd([[
+  highlight Normal guibg=NONE ctermbg=NONE
+  highlight NonText guibg=NONE ctermbg=NONE
+  highlight NormalFloat guibg=NONE ctermbg=NONE
+  highlight NormalNC guibg=NONE ctermbg=NONE
+  highlight LineNr guibg=NONE ctermbg=NONE
+  highlight CursorLineNr guibg=NONE ctermbg=NONE
+]])
+
+-- Which-Key transparency
+vim.cmd([[
+  highlight WhichKeyFloat guibg=NONE ctermbg=NONE
+  highlight WhichKeyBorder guibg=NONE ctermbg=NONE
+  highlight NormalFloat guibg=NONE ctermbg=NONE
+  highlight FloatBorder guibg=NONE ctermbg=NONE
+]])
+
+-- File explorer transparency for NvimTree and NeoTree (depending on your setup)
+vim.cmd([[
+  highlight NvimTreeNormal guibg=NONE ctermbg=NONE
+  highlight NvimTreeEndOfBuffer guibg=NONE ctermbg=NONE
+  highlight NvimTreeNormalNC guibg=NONE ctermbg=NONE
+  highlight NeoTreeNormal guibg=NONE ctermbg=NONE
+  highlight NeoTreeEndOfBuffer guibg=NONE ctermbg=NONE
+  highlight NeoTreeNormalNC guibg=NONE ctermbg=NONE
+]])
+
+-- Telescope transparency
+vim.cmd([[
+  highlight TelescopeNormal guibg=NONE ctermbg=NONE
+  highlight TelescopeBorder guibg=NONE ctermbg=NONE
+]])
+
+-- General floating windows (covering all possibilities for floating transparency)
+vim.cmd([[
+  highlight Pmenu guibg=NONE ctermbg=NONE
+  highlight PmenuSel guibg=NONE ctermbg=NONE
+  highlight FloatBorder guibg=NONE ctermbg=NONE
+]])
+
+vim.cmd([[
+  highlight CursorLine guibg=#394264
+]])
+
+vim.cmd([[
+  highlight Visual guibg=#394264
+]])
+
+-- Add this to your init.lua or a separate lua/colors.lua file
+vim.cmd([[
+  highlight Pmenu guibg=#2e3440 guifg=#d8dee9
+  highlight PmenuSel guibg=#4c566a guifg=#ffffff
+  highlight PmenuSbar guibg=#4c566a
+  highlight PmenuThumb guibg=#ffffff
+]])
+
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>fl",
+  ":lua require('telescope.builtin').live_grep({ search_dirs = vim.tbl_map(function(bufnr) return vim.fn.bufname(bufnr) end, vim.api.nvim_list_bufs()) })<CR>",
+  { noremap = true, silent = true }
+)
+
+
+File: README.md
+================================================
+# 💤 LazyVim
+
+A starter template for [LazyVim](https://github.com/LazyVim/LazyVim).
+Refer to the [documentation](https://lazyvim.github.io/installation) to get started.
+
+
+File: lua/plugins/nvim-cmp.lua
+================================================
+return {
+  "hrsh7th/nvim-cmp",
+  ---@param opts cmp.ConfigSchema
+  opts = function(_, opts)
+    local has_words_before = function()
+      unpack = unpack or table.unpack
+      local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+      return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+    end
+
+    local cmp = require("cmp")
+
+    opts.mapping = vim.tbl_extend("force", opts.mapping, {
+      ["<Tab>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          -- You could replace select_next_item() with confirm({ select = true }) to get VS Code autocompletion behavior
+          cmp.select_next_item()
+        elseif vim.snippet.active({ direction = 1 }) then
+          vim.schedule(function()
+            vim.snippet.jump(1)
+          end)
+        elseif has_words_before() then
+          cmp.complete()
+        else
+          fallback()
+        end
+      end, { "i", "s" }),
+      ["<S-Tab>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          cmp.select_prev_item()
+        elseif vim.snippet.active({ direction = -1 }) then
+          vim.schedule(function()
+            vim.snippet.jump(-1)
+          end)
+        else
+          fallback()
+        end
+      end, { "i", "s" }),
+    })
+  end,
+}
+
+
+File: lua/plugins/example.lua
+================================================
+-- since this is just an example spec, don't actually load anything here and return an empty spec
+-- stylua: ignore
+if true then return {} end
+
+-- every spec file under the "plugins" directory will be loaded automatically by lazy.nvim
+--
+-- In your plugin files, you can:
+-- * add extra plugins
+-- * disable/enabled LazyVim plugins
+-- * override the configuration of LazyVim plugins
+return {
+  -- add gruvbox
+  { "ellisonleao/gruvbox.nvim" },
+
+  -- Configure LazyVim to load gruvbox
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "gruvbox",
+    },
+  },
+
+  -- change trouble config
+  {
+    "folke/trouble.nvim",
+    -- opts will be merged with the parent spec
+    opts = { use_diagnostic_signs = true },
+  },
+
+  -- disable trouble
+  { "folke/trouble.nvim", enabled = false },
+
+  -- override nvim-cmp and add cmp-emoji
+  {
+    "hrsh7th/nvim-cmp",
+    dependencies = { "hrsh7th/cmp-emoji" },
+    ---@param opts cmp.ConfigSchema
+    opts = function(_, opts)
+      table.insert(opts.sources, { name = "emoji" })
+    end,
+  },
+
+  -- change some telescope options and a keymap to browse plugin files
+  {
+    "nvim-telescope/telescope.nvim",
+    keys = {
+      -- add a keymap to browse plugin files
+      -- stylua: ignore
+      {
+        "<leader>fp",
+        function() require("telescope.builtin").find_files({ cwd = require("lazy.core.config").options.root }) end,
+        desc = "Find Plugin File",
+      },
+    },
+    -- change some options
+    opts = {
+      defaults = {
+        layout_strategy = "horizontal",
+        layout_config = { prompt_position = "top" },
+        sorting_strategy = "ascending",
+        winblend = 0,
+      },
+    },
+  },
+
+  -- add pyright to lspconfig
+  {
+    "neovim/nvim-lspconfig",
+    ---@class PluginLspOpts
+    opts = {
+      ---@type lspconfig.options
+      servers = {
+        -- pyright will be automatically installed with mason and loaded with lspconfig
+        pyright = {},
+      },
+    },
+  },
+
+  -- add tsserver and setup with typescript.nvim instead of lspconfig
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      "jose-elias-alvarez/typescript.nvim",
+      init = function()
+        require("lazyvim.util").lsp.on_attach(function(_, buffer)
+          -- stylua: ignore
+          vim.keymap.set( "n", "<leader>co", "TypescriptOrganizeImports", { buffer = buffer, desc = "Organize Imports" })
+          vim.keymap.set("n", "<leader>cR", "TypescriptRenameFile", { desc = "Rename File", buffer = buffer })
+        end)
+      end,
+    },
+    ---@class PluginLspOpts
+    opts = {
+      ---@type lspconfig.options
+      servers = {
+        -- tsserver will be automatically installed with mason and loaded with lspconfig
+        tsserver = {},
+      },
+      -- you can do any additional lsp server setup here
+      -- return true if you don't want this server to be setup with lspconfig
+      ---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
+      setup = {
+        -- example to setup with typescript.nvim
+        tsserver = function(_, opts)
+          require("typescript").setup({ server = opts })
+          return true
+        end,
+        -- Specify * to use this function as a fallback for any server
+        -- ["*"] = function(server, opts) end,
+      },
+    },
+  },
+
+  -- for typescript, LazyVim also includes extra specs to properly setup lspconfig,
+  -- treesitter, mason and typescript.nvim. So instead of the above, you can use:
+  { import = "lazyvim.plugins.extras.lang.typescript" },
+
+  -- add more treesitter parsers
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "bash",
+        "html",
+        "javascript",
+        "json",
+        "lua",
+        "markdown",
+        "markdown_inline",
+        "python",
+        "query",
+        "regex",
+        "tsx",
+        "typescript",
+        "vim",
+        "yaml",
+      },
+    },
+  },
+
+  -- since `vim.tbl_deep_extend`, can only merge tables and not lists, the code above
+  -- would overwrite `ensure_installed` with the new value.
+  -- If you'd rather extend the default config, use the code below instead:
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = function(_, opts)
+      -- add tsx and treesitter
+      vim.list_extend(opts.ensure_installed, {
+        "tsx",
+        "typescript",
+      })
+    end,
+  },
+
+  -- the opts function can also be used to change the default opts:
+  {
+    "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
+    opts = function(_, opts)
+      table.insert(opts.sections.lualine_x, "😄")
+    end,
+  },
+
+  -- or you can return new options to override all the defaults
+  {
+    "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
+    opts = function()
+      return {
+        --[[add your custom lualine config here]]
+      }
+    end,
+  },
+
+  -- use mini.starter instead of alpha
+  { import = "lazyvim.plugins.extras.ui.mini-starter" },
+
+  -- add jsonls and schemastore packages, and setup treesitter for json, json5 and jsonc
+  { import = "lazyvim.plugins.extras.lang.json" },
+
+  -- add any tools you want to have installed below
+  {
+    "williamboman/mason.nvim",
+    opts = {
+      ensure_installed = {
+        "stylua",
+        "shellcheck",
+        "shfmt",
+        "flake8",
+      },
+    },
+  },
+}
+
+
+File: lua/config/options.lua
+================================================
+-- Options are automatically loaded before lazy.nvim startup
+-- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
+-- Add any additional options here
+
+
+File: lua/plugins/svelte.lua
+================================================
+return {
+  {
+    "leafOfTree/vim-svelte-plugin",
+    ft = { "svelte" },
+    config = function()
+      vim.g.vim_svelte_plugin_use_typescript = 1
+      vim.g.vim_svelte_plugin_use_sass = 1
+      vim.g.vim_svelte_plugin_use_pug = 0
+    end,
+  },
+  {
+    "neovim/nvim-lspconfig",
+    opts = function(_, opts)
+      require("lspconfig").svelte.setup({})
+    end,
+  },
+}
+
+
+File: lua/config/keymaps.lua
+================================================
+-- Keymaps are automatically loaded on the VeryLazy event
+-- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
+-- Add any additional keymaps here
+
+
+File: lua/plugins/golf.lua
+================================================
+return {
+  {
+    "vuciv/golf",
+    cmd = "Golf", -- Load only when the Golf command is called
+  },
+}
+
+Summary:
+Total files: 21
+Total size: 75940 bytes
