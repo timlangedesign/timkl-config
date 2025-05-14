@@ -46,6 +46,7 @@ alias ze="nvim ~/.config/zsh/.zshrc"                # Edit .zshrc with Neovim
 alias ll="ls -a"                        # Show all files
 alias ls="eza --icons=always"           # Use eza with icons
 alias c="clear"
+alias g="glimpse -e \"**/node_modules/*\" -f codebase.txt"  # Glimpse with node_modules excluded
 
 # YouTube Download Aliases
 alias yt-mp4='yt-dlp -f bestvideo+bestaudio/best -o "%(title)s.%(ext)s" --merge-output-format mp4'
@@ -130,3 +131,11 @@ fi
 
 # bun completions
 [ -s "/Users/tim.lange/.bun/_bun" ] && source "/Users/tim.lange/.bun/_bun"
+
+# alias h="ssh root@5.223.45.113"
+# Smart SSH into Hetzner and auto tmux
+h() {
+  ssh root@5.223.45.113 -t '
+    tmux attach || tmux new -s timkl 
+  '
+}
