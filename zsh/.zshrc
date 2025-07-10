@@ -1,8 +1,15 @@
 # ----------------------------------------
-# Homebrew Initialization
+# Package Manager Initialization
 # ----------------------------------------
+# Homebrew (macOS Apple Silicon)
 if [[ -d "/opt/homebrew" ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
+# Homebrew (macOS Intel / Linux)
+elif [[ -d "/usr/local/bin/brew" ]]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+# Linuxbrew
+elif [[ -d "/home/linuxbrew/.linuxbrew" ]]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
 # ----------------------------------------
@@ -77,20 +84,44 @@ export ZSH_DISABLE_COMPFIX="true"
 # ----------------------------------------
 # History Configuration
 # ----------------------------------------
-HIST_STAMPS="mm/dd/yyyy"
+HISTFILE=$HOME/.zhistory
 HISTSIZE=10000
 SAVEHIST=10000
-HISTFILE=$HOME/.cache/zsh/history
+HIST_STAMPS="mm/dd/yyyy"
 
 # ----------------------------------------
 # PATH Configuration
 # ----------------------------------------
-export PATH="$HOME/.bun/bin:$HOME/.config/scripts:$HOME/bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/Desktop/flutter_dev/flutter/bin:$HOME/Developer/PlaydateSDK/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+# User-specific paths
+export PATH="$HOME/.bun/bin:$PATH"
+export PATH="$HOME/.config/scripts:$PATH"
+export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# Development tools (adjust paths as needed)
+export PATH="$HOME/Desktop/flutter_dev/flutter/bin:$PATH"
+export PATH="$HOME/Developer/PlaydateSDK/bin:$PATH"
+
+# Package managers (cross-platform)
+if [[ -d "/opt/homebrew/bin" ]]; then
+  export PATH="/opt/homebrew/bin:$PATH"
+fi
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 
 # ----------------------------------------
-# Powerlevel10k Theme
+# Powerlevel10k Theme (Cross-platform)
 # ----------------------------------------
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+# Try different installation paths
+if [[ -f "/opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme" ]]; then
+  source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+elif [[ -f "/usr/local/share/powerlevel10k/powerlevel10k.zsh-theme" ]]; then
+  source /usr/local/share/powerlevel10k/powerlevel10k.zsh-theme
+elif [[ -f "$HOME/.local/share/powerlevel10k/powerlevel10k.zsh-theme" ]]; then
+  source $HOME/.local/share/powerlevel10k/powerlevel10k.zsh-theme
+fi
+
+# Load p10k configuration if available
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
 # ----------------------------------------
@@ -110,11 +141,8 @@ fi
 export PLAYDATE_SDK_PATH="$HOME/Developer/PlaydateSDK"
 
 # ----------------------------------------
-# History Behavior
+# History Behavior & Options
 # ----------------------------------------
-HISTFILE=$HOME/.zhistory
-SAVEHIST=1000
-HISTSIZE=999
 setopt share_history
 setopt hist_expire_dups_first
 setopt hist_ignore_dups
@@ -141,3 +169,7 @@ h() {
     tmux attach || tmux new -s timkl 
   '
 }
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

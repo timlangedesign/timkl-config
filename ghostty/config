@@ -1,22 +1,54 @@
 
+# ========================================
+# Ghostty Terminal Configuration
+# Cross-platform terminal emulator config
+# ========================================
+
+# ----------------------------------------
+# Clipboard & Selection
+# ----------------------------------------
 clipboard-read = allow
 clipboard-write = allow
 copy-on-select = true
+
+# ----------------------------------------
+# Window Behavior
+# ----------------------------------------
 window-save-state = always
 window-new-tab-position = end
 window-theme = dark
+title = " "
+
+# ----------------------------------------
+# Window Layout & Spacing
+# ----------------------------------------
 window-padding-x = 12
 window-padding-y = 12
 window-padding-balance = true
-background-opacity = 1
+
+# ----------------------------------------
+# Visual Effects
+# ----------------------------------------
+background-opacity = .93
 background-blur-radius = 16
 theme = tokyonight
+
+# ----------------------------------------
+# Typography
+# ----------------------------------------
 font-size = 16
+# Cross-platform font fallback: SF Mono (macOS), Fira Code (Linux)
 font-family = SF Mono
-adjust-cell-height = 8%
+adjust-cell-height = 15%
+
+# ----------------------------------------
+# Mouse Behavior
+# ----------------------------------------
 mouse-hide-while-typing = true
 mouse-scroll-multiplier = 2
-adjust-cell-height = 15%
-macos-titlebar-proxy-icon=hidden
-macos-icon=xray
-title = " "
+
+# ----------------------------------------
+# macOS-Specific Settings
+# ----------------------------------------
+macos-titlebar-proxy-icon = hidden
+macos-icon = xray
