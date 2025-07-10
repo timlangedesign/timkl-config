@@ -47,6 +47,8 @@ alias ll="ls -a"                        # Show all files
 alias ls="eza --icons=always"           # Use eza with icons
 alias c="clear"
 alias g="glimpse -e \"**/node_modules/*\" -f codebase.txt"  # Glimpse with node_modules excluded
+alias oc="opencode"                     # OpenCode shortcut
+alias or="oc run"                       # OpenCode run shortcut
 
 # YouTube Download Aliases
 alias yt-mp4='yt-dlp -f bestvideo+bestaudio/best -o "%(title)s.%(ext)s" --merge-output-format mp4'
